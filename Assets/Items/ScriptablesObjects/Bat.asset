@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f784f54ce324041929e242bf204fd5, type: 3}
+  m_Name: Bat
+  m_EditorClassIdentifier: 
+  id: 0
+  itemName: Bat
+  description: Can hit someone
+  image: {fileID: 21300000, guid: 1fe2adf3bf501447988c5a364eda5425, type: 3}
+  prefabInScene: {fileID: 1850600616112740, guid: 860ade0594eaba94d888d4073f07a490, type: 3}
+  prefabInHand: {fileID: 1850600616112740, guid: f95e99b1aa8be4a3b9bd653646048edb, type: 3}
+  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 236aa0c0c55fa42f5824ea546c586fcf, type: 3}
+  stackable: 0
+  multiple: 1
+  numberItemByStack: 1

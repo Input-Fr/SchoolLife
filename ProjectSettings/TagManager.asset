@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - CinemachineTarget
+  - Item
+  - InteractiveObject
+  - Locked
+  - Unlocked
+  - MenuCamera
+  - PlayerGroup
+  - Platform
+  - Professor
+  - ItemsInHandParent
+  - InputsManager
+  - caught
+  - button
+  - TaskS
+  - BuildingC
+  - ClassButton
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Environment
+  - Item
+  - Door
+  - Player
+  - Professor
+  - button
+  - NavMeshSurface
+  - Shop
+  - ClassButton
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

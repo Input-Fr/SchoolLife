@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f784f54ce324041929e242bf204fd5, type: 3}
+  m_Name: Subject
+  m_EditorClassIdentifier: 
+  id: 3
+  itemName: Subject
+  description: The subject of the next exam
+  image: {fileID: 21300000, guid: 96d14b489d69c4aae9af24b077cf8a49, type: 3}
+  prefabInScene: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
+  prefabInHand: {fileID: 1685343955664076, guid: 4cadf07ffe16c4676b954c0cb51db61e, type: 3}
+  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 3eb3670a1ba334627b231cf47a5c8c70, type: 3}
+  stackable: 0
+  multiple: 0
+  numberItemByStack: 1

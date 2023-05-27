@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f784f54ce324041929e242bf204fd5, type: 3}
+  m_Name: Phone
+  m_EditorClassIdentifier: 
+  id: 2
+  itemName: Phone
+  description: It can make a sound
+  image: {fileID: 21300000, guid: 517bec4f4faa94e0ea6fa7739279b3be, type: 3}
+  prefabInScene: {fileID: 28591850792169644, guid: 63244fad222364a7fbf622dc89ec8fa9, type: 3}
+  prefabInHand: {fileID: 28591850792169644, guid: 2aa67118227144ee695322ba3cf21db0, type: 3}
+  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 9796be56833a94dbc9fff817b0ff6a44, type: 3}
+  stackable: 0
+  multiple: 0
+  numberItemByStack: 1

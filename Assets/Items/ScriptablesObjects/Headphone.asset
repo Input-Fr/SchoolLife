@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f784f54ce324041929e242bf204fd5, type: 3}
+  m_Name: Headphone
+  m_EditorClassIdentifier: 
+  id: 4
+  itemName: Headphone
+  description: To chill while playing
+  image: {fileID: 21300000, guid: 87baf4c034a4958488f6f4758b48f813, type: 3}
+  prefabInScene: {fileID: 5698642219997414686, guid: 8032896c3cb13394eb1a2f83af56a615, type: 3}
+  prefabInHand: {fileID: 5698642219997414686, guid: 1a1ed2dfbafb9904eb5935e76c2747df, type: 3}
+  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 0a9d30db891b494438d353d6cbbf74f2, type: 3}
+  stackable: 0
+  multiple: 1
+  numberItemByStack: 1
