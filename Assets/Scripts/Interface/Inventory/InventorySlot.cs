@@ -1,6 +1,7 @@
 using Interface.Inventory.Tooltips;
 using Items;
 using Items.BatFeatures;
+using Items.GlassesFeatures;
 using Items.PhoneFeatures;
 using Items.SubjectFeatures;
 using PlayerScripts;
@@ -77,6 +78,9 @@ namespace Interface.Inventory
                     break;
                 case Headphone headphone:
                     headphone.IsActive.Value = active;
+                    break;
+                case Glasses glasses:
+                    glasses.IsActive.Value = active;
                     break;
             }
             

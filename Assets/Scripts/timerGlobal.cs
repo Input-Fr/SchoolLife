@@ -16,7 +16,7 @@ public class timerGlobal : NetworkBehaviour
     bool isDone = false;
 
     
-    public static float timeInSecMCQ = 480;
+    public static float timeInSecMCQ = 4*60;
     public static float timeInSecPause = 60;
 
     public override void OnNetworkSpawn()
@@ -57,7 +57,7 @@ public class timerGlobal : NetworkBehaviour
             {
                 timeInSecMCQ -= Time.deltaTime;
                 updateClClientRpc(((int)timeInSecMCQ)/60,((int)timeInSecMCQ)%60, isNotInPause);
-                if ((((int)timeInSecMCQ)/60) < 5)
+                if ((((int)timeInSecMCQ)/60) < 2)
                 {
                     DesactivateDoorClientRpc(true);
                 }
@@ -101,7 +101,7 @@ public class timerGlobal : NetworkBehaviour
             }
             else
             {
-                timeInSecMCQ = 480;
+                timeInSecMCQ = 4*60;
                 timeInSecPause = 60;
             }
         }

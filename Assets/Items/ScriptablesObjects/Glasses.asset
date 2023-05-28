@@ -16,9 +16,9 @@ MonoBehaviour:
   itemName: Glasses
   description: To see teachers through walls
   image: {fileID: 21300000, guid: 2e23dcb340d712e4b825877c97ef3b12, type: 3}
-  prefabInScene: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-  prefabInHand: {fileID: 1685343955664076, guid: 4cadf07ffe16c4676b954c0cb51db61e, type: 3}
-  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 3eb3670a1ba334627b231cf47a5c8c70, type: 3}
+  prefabInScene: {fileID: 6617795926525372443, guid: 261378a95b822418a8a13fe538e1b347, type: 3}
+  prefabInHand: {fileID: 6617795926525372443, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
+  inventoryItemPrefab: {fileID: 4918019687312961451, guid: 1e3e4dad301884db086f89aff55da247, type: 3}
   stackable: 0
   multiple: 0
   numberItemByStack: 1

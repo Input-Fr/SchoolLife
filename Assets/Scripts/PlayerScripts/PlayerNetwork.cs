@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace PlayerScripts
         [SerializeField] private GameObject playerFollowCamera;
         [SerializeField] private GameObject mainCamera;
         [SerializeField] private GameObject interfaceCanvas;
+        [SerializeField] private GameObject subject;
+        [SerializeField] private List<Transform> subjectPos;
+        private int numberOfSubject;
         
         private const string MenuCameraTag = "MenuCamera";
 
@@ -21,6 +25,17 @@ namespace PlayerScripts
         private void Start()
         {
             UpdateComponentsState();
+            numberOfSubject = subjectPos.Count;
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            if (!IsServer || !IsOwner) return;
+            for (int i = 0; i < numberOfSubject; i++)
+            {
+                GameObject instantiated = Instantiate(subject,subjectPos[i].position,Quaternion.identity);
+                instantiated.GetComponent<NetworkObject>().Spawn(true);
+            }
         }
 
         private void UpdateComponentsState()

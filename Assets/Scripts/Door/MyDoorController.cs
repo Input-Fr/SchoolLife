@@ -4,6 +4,7 @@ using Interface.Inventory;
 using PlayerScripts;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Door
 {
@@ -14,16 +15,16 @@ namespace Door
         [SerializeField] private Animator doorAnimator;
 
         public NetworkVariable<bool> isOpen = new(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-        public NetworkVariable<bool> isLocked = new(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        public NetworkVariable<bool> isLocked = new(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+        [SerializeField] private string openDoorAnimationName = "Open";
+        [SerializeField] private string closeDoorAnimationName = "Close";
+        
         public bool AnimatorIsPlaying => doorAnimator.GetCurrentAnimatorStateInfo(0).length > doorAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
         private const string LockedTag = "Locked";
         private const string UnlockedTag = "Unlocked";
 
-        private const string OpenDoorAnimationName = "DoorOpen";
-        private const string CloseDoorAnimationName = "DoorClose";
-        
         private InventoryManager _inventoryManager;
 
         #endregion
@@ -76,17 +77,18 @@ namespace Door
         {
             if (open)
             {
-                PlayAnimationServerRpc(true, OpenDoorAnimationName);
+                PlayAnimationServerRpc(true, openDoorAnimationName);
             }
             else
             {
-                PlayAnimationServerRpc(false, CloseDoorAnimationName);
+                PlayAnimationServerRpc(false, closeDoorAnimationName);
             }
         }
         
         [ServerRpc(RequireOwnership = false)]
         private void PlayAnimationServerRpc(bool value, string animationName)
         {
+            Debug.Log(animationName);
             isOpen.Value = value;
             PlayerAnimationClientRpc(animationName);
         }

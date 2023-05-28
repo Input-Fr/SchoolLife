@@ -302,6 +302,10 @@ namespace Professors
         private void SetAgentIsStoppedClientRpc(bool isStopped)
         {
             agent.isStopped = isStopped;
+            if (isStopped)
+            {
+                agent.ResetPath();
+            }
         }
 
         [ClientRpc]

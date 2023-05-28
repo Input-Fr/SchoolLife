@@ -8,6 +8,7 @@ using System;
 using System.Threading.Tasks;
 using Game;
 using Items;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 
 public class Main : NetworkBehaviour
@@ -15,9 +16,11 @@ public class Main : NetworkBehaviour
     // Start is called before the first frame update
     static public Main Instance;
     public int switchCount;
+    public bool hasSpawned;
     public int onCount = 0;
     public GameObject canvas;
     [SerializeField] private ItemData key;
+    [SerializeField] private AudioSource done;
 
     public Switch switch1;
     public Switch switch2;
@@ -43,6 +46,7 @@ public class Main : NetworkBehaviour
     private void OnDisable()
     {
         GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = false;
+        if (hasSpawned) done.Play();
     }
     private void Awake()
     {
@@ -50,9 +54,9 @@ public class Main : NetworkBehaviour
 
     }
 
-    private void Start() {
+    private void Start()
+    {
         gameObject.SetActive(false);
-        
         if (!IsOwner) return;
         
         if (PlayerManager.LocalInstance != null)
@@ -63,6 +67,7 @@ public class Main : NetworkBehaviour
         {
             PlayerManager.OnAnyPlayerSpawn += PlayerManager_OnAnyPlayerSpawn;
         }
+        hasSpawned = true;
     }
 
     void PlayerManager_OnAnyPlayerSpawn(object sender, EventArgs e)
@@ -73,7 +78,7 @@ public class Main : NetworkBehaviour
         }
     }
 
-
+    
     public void SwitchChange(int points)
     {
         if (!IsOwner) return;
@@ -93,14 +98,14 @@ public class Main : NetworkBehaviour
             }
             else
             {
-                int pointToAdd = 10;
+                int pointToAdd = 2;
                 if (pointToAdd + PlayerManager.LocalInstance.hudSystem.points > 20)
                 {
                     Debug.Log("Sorry but you can get more than 20 points");
                 }
                 else
                 {
-                    PlayerManager.LocalInstance.hudSystem.points += 10;
+                    PlayerManager.LocalInstance.hudSystem.points += pointToAdd;
                 }
                 
             }
@@ -120,4 +125,6 @@ public class Main : NetworkBehaviour
             switch12.ResetTask();
         }
     }
+    
+    
 }

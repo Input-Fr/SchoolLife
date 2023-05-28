@@ -18,12 +18,12 @@ public class BGMPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
-        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143834286141490/80s_Retrowave_Synthwave_Music_-_Hackers_by_Karl_Casey_Royalty_Free_Copyright_Safe_Music1.mp3");
-        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143878066286683/80s_Synthwave_Chill_Synth_-_Worship_the_Night_Royalty_Free_No_Copyright_Background_Music1.mp3");
-        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143929400369303/Krosia_-_Azur1.mp3");
-        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
-        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112270446621110272/KLAXON_-_SOUND_EFFECT_HD2.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143834286141490/80s_Retrowave_Synthwave_Music_-_Hackers_by_Karl_Casey_Royalty_Free_Copyright_Safe_Music1.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143878066286683/80s_Synthwave_Chill_Synth_-_Worship_the_Night_Royalty_Free_No_Copyright_Background_Music1.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143929400369303/Krosia_-_Azur1.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112270446621110272/KLAXON_-_SOUND_EFFECT_HD2.mp3");
         StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
         firstTime = false;
     }
