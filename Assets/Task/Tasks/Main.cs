@@ -6,6 +6,7 @@ using PlayerScripts;
 using Interface.Inventory;
 using System;
 using System.Threading.Tasks;
+using Game;
 using Items;
 using UnityEditor.Experimental.GraphView;
 
@@ -33,7 +34,16 @@ public class Main : NetworkBehaviour
 
     InventoryManager _inventory;
     public GameObject currentButton; // talvin il faut pas les supprimer ces variables elle sont en public mais prennent pas leurs valeurs en SerializeField
+    void OnEnable()
+    {
+        GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = true;
 
+    }
+
+    private void OnDisable()
+    {
+        GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = false;
+    }
     private void Awake()
     {
         Instance = this;
@@ -83,7 +93,16 @@ public class Main : NetworkBehaviour
             }
             else
             {
-                PlayerManager.LocalInstance.hudSystem.points += 10;
+                int pointToAdd = 10;
+                if (pointToAdd + PlayerManager.LocalInstance.hudSystem.points > 20)
+                {
+                    Debug.Log("Sorry but you can get more than 20 points");
+                }
+                else
+                {
+                    PlayerManager.LocalInstance.hudSystem.points += 10;
+                }
+                
             }
             
 

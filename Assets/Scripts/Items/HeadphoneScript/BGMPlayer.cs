@@ -1,27 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Threading.Tasks;
+using PlayerScripts;
 using UnityEngine.Networking;
+using Random = UnityEngine.Random;
+
 public class BGMPlayer : MonoBehaviour
 {
 
     private List<string> musicFile = new List<string>();
-    private string chosenOne;
     private AudioSource _audioSource;
-    
-    
+    private bool firstTime = true;
+    private bool isSelected;
     // Start is called before the first frame update
     void Start()
     {
-        
-        musicFile.Add("https://drive.google.com/uc?export=download&id=1PLsM1fnu1RWQW8yXdQfuP1I0j9HXDUWg");
-        musicFile.Add("https://drive.google.com/uc?export=download&id=1Zu8KbkgcAgoNDIdYhKchkSXfTz4wxM2q");
-        musicFile.Add("https://drive.google.com/uc?export=download&id=1W_OKsxDq4UhX71soWlZHDFOeFGKflJTb");
-        musicFile.Add("https://drive.google.com/uc?export=download&id=12pMSCAENU2gDiB5MTLCKTQapQZ34d1x4");
-        musicFile.Add("https://drive.google.com/uc?export=download&id=149p5LX8ZfOLdj3FBbf5wfCl3LYpVC7fJ");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143834286141490/80s_Retrowave_Synthwave_Music_-_Hackers_by_Karl_Casey_Royalty_Free_Copyright_Safe_Music1.mp3");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143878066286683/80s_Synthwave_Chill_Synth_-_Worship_the_Night_Royalty_Free_No_Copyright_Background_Music1.mp3");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143929400369303/Krosia_-_Azur1.mp3");
+        //musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112143936761385061/Synthwave_Retrowave_-_Last_Stop_Royalty_Free_Copyright_Safe_Music1.mp3");
+        musicFile.Add("https://cdn.discordapp.com/attachments/500246166428975105/1112270446621110272/KLAXON_-_SOUND_EFFECT_HD2.mp3");
         StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
-        
+        firstTime = false;
     }
 
     public static string GetFileLocation(string relativePath)
@@ -34,13 +38,14 @@ public class BGMPlayer : MonoBehaviour
         using (UnityWebRequest uwr = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
         {
             yield return uwr.SendWebRequest();
-
+            
             if (uwr.isNetworkError || uwr.isHttpError)
             {
                 Debug.Log(uwr.error);
             }
             else
             {
+                Debug.Log("entered the statement");
                 _audioSource = gameObject.GetComponent<AudioSource>();
                 if (_audioSource == null)
                 {
@@ -62,13 +67,31 @@ public class BGMPlayer : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    private void OnEnable()
     {
-        if (_audioSource != null && !_audioSource.isPlaying)
+        if (!firstTime) StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
+    }
+
+    private async void putSelection()
+    {
+        await Task.Delay(5);
+        isSelected = false;
+    }
+    
+    private void Update()
+    {
+        if (!PlayerManager.LocalInstance.inventoryManager.hasHeadphone)
         {
-            chosenOne = musicFile[Random.Range(0, musicFile.Count)];
-            StartCoroutine(MusicPlayer(chosenOne));
+            gameObject.SetActive(false);
+        }
+        //if (PlayerManager.LocalInstance.inventoryManager != null) Debug.Log(PlayerManager.LocalInstance.inventoryManager.hasHeadphone);
+        if (_audioSource != null && !_audioSource.isPlaying && !isSelected)
+        {
+            StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
+            isSelected = true;
+            putSelection();
         }
     }
+    
 }

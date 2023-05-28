@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Door;
+using Game;
 using Interface;
 using Interface.Inventory;
 using Interface.Inventory.Tooltips;
@@ -46,7 +47,7 @@ namespace PlayerScripts
 
 		public GameObject SoundReplication;
 		private GameObject instantiation;
-		
+		public GameInputs gameInput;
 		public static event EventHandler OnAnyPlayerSpawn;
 
 		#endregion
@@ -57,6 +58,7 @@ namespace PlayerScripts
 			
 			if (IsOwner)
 			{
+				gameInput = GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>();
 				LocalInstance = this;
 				thirdPersonController.gameObject.layer = LayerMask.NameToLayer("Default");
 			}

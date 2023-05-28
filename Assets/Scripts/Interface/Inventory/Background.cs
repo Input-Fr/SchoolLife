@@ -21,7 +21,7 @@ namespace Interface.Inventory
             InventoryItem item = eventData.pointerDrag.GetComponent<InventoryItem>();
             if (item.itemData.id == 4)
             {
-                PlayerManager.LocalInstance.inventoryManager.hasSubject = false;
+                PlayerManager.LocalInstance.inventoryManager.hasHeadphone = false;
             }
                 
             if (item.itemData.itemName == "Subject")

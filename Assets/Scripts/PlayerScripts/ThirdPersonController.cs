@@ -42,7 +42,6 @@ namespace PlayerScripts
         [SerializeField] private float groundedOffset = -0.14f; 
         [SerializeField] private float groundedRadius = 0.28f; 
         [SerializeField] private LayerMask groundLayers;
-        
         private bool grounded {
             get
             {
@@ -162,7 +161,7 @@ namespace PlayerScripts
             _fallTimeoutDelta = fallTimeout;
         }
 
-        private void AnimatorCheck()
+        public void AnimatorCheck()
         { 
             animator.SetBool(_animIDGrounded, grounded);
         }
@@ -183,6 +182,7 @@ namespace PlayerScripts
 
         private void Move()
         {
+        
             float targetSpeed = _gameInputs.Sprint && !isKnockedOut ? sprintSpeed : moveSpeed;
 
             if (_gameInputs.Move == Vector2.zero)
@@ -226,6 +226,8 @@ namespace PlayerScripts
 
             animator.SetFloat(_animIDSpeed, _animationBlend);
             animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+        
+            
         }
 
         private void JumpAndGravity()
@@ -233,11 +235,11 @@ namespace PlayerScripts
             if (grounded)
             {
                 _fallTimeoutDelta = fallTimeout; 
-                
+            
                 animator.SetBool(_animIDJump, false);
                 animator.SetBool(_animIDFreeFall, false);
 
-                 if (_verticalVelocity < 0.0f)
+                if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
                 }
@@ -264,7 +266,7 @@ namespace PlayerScripts
                 {
                     animator.SetBool(_animIDFreeFall, true);
                 }
-                
+            
                 _gameInputs.ResetJumpInput();
             }
 
@@ -272,6 +274,8 @@ namespace PlayerScripts
             {
                 _verticalVelocity += gravity * Time.deltaTime;
             }
+            
+            
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

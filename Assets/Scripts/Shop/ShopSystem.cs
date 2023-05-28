@@ -1,9 +1,11 @@
 using System;
+using Game;
 using Interface;
 using Interface.Inventory;
 using Items;
 using PlayerScripts;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +25,17 @@ namespace Shop
         
         private InventoryManager _inventory;
 
+        void OnEnable()
+        {
+            GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = true;
+
+        }
+
+        private void OnDisable()
+        {
+            GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = false;
+        }
+
         private void Start()
         { 
             
@@ -38,7 +51,7 @@ namespace Shop
                 
                 phoneBtn.onClick.AddListener(() =>
                 {
-                    if (_inventory.AddItem(phone))
+                    if (hudSystem.wealth >= 100 && _inventory.AddItem(phone))
                     {
                         hudSystem.wealth -= 100;
                     }
@@ -46,7 +59,7 @@ namespace Shop
         
                 batBtn.onClick.AddListener(() => 
                 {
-                    if (_inventory.AddItem(bat))
+                    if (hudSystem.wealth >= 75 && _inventory.AddItem(bat))
                     {
                         hudSystem.wealth -= 75;
                     }
@@ -54,7 +67,7 @@ namespace Shop
                 
                 headphoneBtn.onClick.AddListener(() => 
                 {
-                    if (_inventory.AddItem(headphone))
+                    if (hudSystem.wealth >= 90 && _inventory.AddItem(headphone))
                     {
                         hudSystem.wealth -= 90;
                     }
@@ -81,7 +94,7 @@ namespace Shop
                 
                 phoneBtn.onClick.AddListener(() =>
                 {
-                    if (_inventory.AddItem(phone))
+                    if (hudSystem.wealth >= 100 && _inventory.AddItem(phone))
                     {
                         hudSystem.wealth -= 100;
                     }
@@ -89,7 +102,7 @@ namespace Shop
         
                 batBtn.onClick.AddListener(() => 
                 {
-                    if (_inventory.AddItem(bat))
+                    if (hudSystem.wealth >= 75 && _inventory.AddItem(bat))
                     {
                         hudSystem.wealth -= 75;
                     }
@@ -97,7 +110,7 @@ namespace Shop
                 
                 headphoneBtn.onClick.AddListener(() => 
                 {
-                    if (_inventory.AddItem(headphone))
+                    if (hudSystem.wealth >= 90 && _inventory.AddItem(headphone))
                     {
                         hudSystem.wealth -= 90;
                     }

@@ -1,4 +1,5 @@
 using System.Linq;
+using PlayerScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,36 @@ namespace Game
 
 		private PlayerInputActions _playerInputActions;
 		private PlayerInputActions.PlayerActions _playerActions;
+		public bool inInterface;
 
-		public Vector2 Move { get; private set; }
+		private Vector2 _move;
+		public Vector2 Move
+		{
+			get => inInterface ? Vector2.zero : _move;
+			private set => _move = value;
+		}
+
 		public Vector2 Look { get; private set; }
-		public bool Jump { get; private set; }
-		public bool Sprint { get; private set; }
+		private bool jump;
+
+		public bool Jump
+		{
+			get => inInterface ? false : jump;
+			private set
+			{
+				jump = value;
+			}
+		}
+		private bool sprint;
+
+		public bool Sprint
+		{
+			get => inInterface ? false : sprint;
+			private set
+			{
+				sprint = value;
+			}
+		}
 		public bool Use { get; private set; }
 		public bool Interact { get; private set; }
 		public int SelectSlot { get; private set; }

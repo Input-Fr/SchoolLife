@@ -11267,6 +11267,7 @@ GameObject:
   - component: {fileID: 6039068021280739278}
   - component: {fileID: 8430395374900963026}
   - component: {fileID: 7469606604614534022}
+  - component: {fileID: 4914212171655354048}
   m_Layer: 0
   m_Name: PauseBkgrd
   m_TagString: Untagged
@@ -11336,6 +11337,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4914212171655354048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773470818033680658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c1c553b01593244880d74e700078a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5774256707884718185
 GameObject:
   m_ObjectHideFlags: 0
@@ -13858,7 +13871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6530261604895995393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13936,6 +13949,7 @@ MonoBehaviour:
   textCode: {fileID: 8306519785857631351}
   hudSystem: {fileID: 6223446351626368432}
   SoundReplication: {fileID: 8319184264981763050, guid: 63212ee72de662446aa552849bc5d5c6, type: 3}
+  gameInput: {fileID: 0}
 --- !u!114 &7508801973074220029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16315,6 +16329,7 @@ MonoBehaviour:
   switch10: {fileID: 3535643843239805264}
   switch11: {fileID: 3535643844150927293}
   switch12: {fileID: 3535643843305939601}
+  currentButton: {fileID: 0}
 --- !u!1 &7458108684946500428
 GameObject:
   m_ObjectHideFlags: 0
@@ -16688,7 +16703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   canPush: 0
   strength: 1.1
 --- !u!114 &7488418049481163921
@@ -16733,7 +16748,7 @@ MonoBehaviour:
   groundedRadius: 0.28
   groundLayers:
     serializedVersion: 2
-    m_Bits: 5184
+    m_Bits: 38080
   cinemachineCameraTarget: {fileID: 2961732205485178305}
   lookSensitivity: 8
   topClamp: 70
