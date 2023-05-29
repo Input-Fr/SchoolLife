@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f784f54ce324041929e242bf204fd5, type: 3}
-  m_Name: Glasses
+  m_Name: Hat
   m_EditorClassIdentifier: 
-  id: 5
-  itemName: Glasses
-  description: To see teachers through walls
-  image: {fileID: 21300000, guid: 73f20123a621d5747879a7c522777324, type: 3}
-  prefabInScene: {fileID: 6617795926525372443, guid: 261378a95b822418a8a13fe538e1b347, type: 3}
+  id: 6
+  itemName: Hat
+  description: To the richest guy of the game
+  image: {fileID: 21300000, guid: 2e23dcb340d712e4b825877c97ef3b12, type: 3}
+  prefabInScene: {fileID: 3508598473107856246, guid: 8338abed5f6db5544be524b3b96852be, type: 3}
   prefabInHand: {fileID: 6617795926525372443, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
   inventoryItemPrefab: {fileID: 4918019687312961451, guid: 1e3e4dad301884db086f89aff55da247, type: 3}
   stackable: 0

@@ -4798,6 +4798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1637496018717452190}
+  - component: {fileID: 1717379320824103982}
   m_Layer: 0
   m_Name: Items
   m_TagString: Untagged
@@ -4826,6 +4827,20 @@ Transform:
   m_Father: {fileID: 6640434153933074998}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717379320824103982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692576611630179332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743e6521a45e18946a1daa0cd35a3e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassesInHand: {fileID: 4285910362998755283}
+  glassesOnHead: {fileID: 8274803679131569399}
 --- !u!1 &1764964429391467308
 GameObject:
   m_ObjectHideFlags: 0
@@ -7235,7 +7250,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -13999,6 +14014,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40c53f2e00b0b4a30b02ad84a7d8d2c4, type: 2}
   - {fileID: 11400000, guid: c14d7861825554188b441c3d6db7f8b9, type: 2}
   - {fileID: 11400000, guid: 642bee07c74027c41b5d8f5d6223e458, type: 2}
+  - {fileID: 11400000, guid: 910df169d66e3a4418d6559918101194, type: 2}
   transformTp: {fileID: 1408139444612764088, guid: 08044a5bd194941f391e31008bd69e0c, type: 3}
   thirdPersonController: {fileID: 7488418049481163921}
   mainCameraGameObject: {fileID: 2774371956461061574}
@@ -18503,9 +18519,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8580133953703253107}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006992316, y: 0.025615992, z: 3.0678507e-10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.000000034517132, y: 0.000000057276317, z: -0.00000005528134, w: 1}
+  m_LocalPosition: {x: 0.006992198, y: 0.025616102, z: 0.00000021295136}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2411775333269971773}
@@ -19665,6 +19681,10 @@ PrefabInstance:
       propertyPath: glassesOnHead
       value: 
       objectReference: {fileID: 8274803679131569399}
+    - target: {fileID: 2173321293179156473, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
+      propertyPath: glassesManager
+      value: 
+      objectReference: {fileID: 1717379320824103982}
     - target: {fileID: 4672447389221374414, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -19726,6 +19746,11 @@ PrefabInstance:
 --- !u!4 &3472640801249727849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5808784773851787937, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
+  m_PrefabInstance: {fileID: 6966433729953048520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4285910362998755283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6617795926525372443, guid: 72536b4af4f78420aa7ee1e4aac68905, type: 3}
   m_PrefabInstance: {fileID: 6966433729953048520}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7333060958187861551
