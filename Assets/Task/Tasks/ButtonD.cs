@@ -49,6 +49,7 @@ public class ButtonD : MonoBehaviour
         {
             canvas = FindInActiveObjectByTag("TaskS");
             canvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -81,4 +82,3 @@ public class ButtonD : MonoBehaviour
     }
 }
 }
-

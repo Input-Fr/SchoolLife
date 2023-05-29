@@ -12,9 +12,10 @@ namespace PlayerScripts
         [SerializeField] private GameObject playerFollowCamera;
         [SerializeField] private GameObject mainCamera;
         [SerializeField] private GameObject interfaceCanvas;
-        [SerializeField] private GameObject subject;
-        [SerializeField] private List<Transform> subjectPos;
-        private int numberOfSubject;
+        [SerializeField] private GameObject subjectPrefab;
+        private static GameObject subject;
+        private static List<Vector3> subjectPos = new List<Vector3>();
+        private static int numberOfSubject;
         
         private const string MenuCameraTag = "MenuCamera";
 
@@ -25,17 +26,28 @@ namespace PlayerScripts
         private void Start()
         {
             UpdateComponentsState();
-            numberOfSubject = subjectPos.Count;
+            
         }
 
+        public static void SpawnSubject()
+        {
+            Debug.Log("Spawned !");
+            Debug.Log(numberOfSubject);
+            for (int i = 0; i < numberOfSubject; i++)
+            {
+                GameObject instantiated = Instantiate(subject,subjectPos[i],Quaternion.identity);
+                instantiated.GetComponent<NetworkObject>().Spawn(true);
+            }
+        }
         public override void OnNetworkSpawn()
         {
             if (!IsServer || !IsOwner) return;
-            for (int i = 0; i < numberOfSubject; i++)
-            {
-                GameObject instantiated = Instantiate(subject,subjectPos[i].position,Quaternion.identity);
-                instantiated.GetComponent<NetworkObject>().Spawn(true);
-            }
+            subject = subjectPrefab;
+            subjectPos.Add(new Vector3(-47.62702f,23.78214f,22.15781403f));
+            subjectPos.Add(new Vector3(-47.62702f,23.78214f,28.95f));
+            subjectPos.Add(new Vector3(-47.62702f,23.78214f,34.32f));
+            numberOfSubject = subjectPos.Count;
+            SpawnSubject();
         }
 
         private void UpdateComponentsState()

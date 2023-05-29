@@ -1,5 +1,4 @@
 using System.Linq;
-using PlayerScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,25 +22,19 @@ namespace Game
 		}
 
 		public Vector2 Look { get; private set; }
-		private bool jump;
+		private bool _jump;
 
 		public bool Jump
 		{
-			get => inInterface ? false : jump;
-			private set
-			{
-				jump = value;
-			}
+			get => inInterface ? false : _jump;
+			private set => _jump = value;
 		}
 		private bool sprint;
 
 		public bool Sprint
 		{
 			get => inInterface ? false : sprint;
-			private set
-			{
-				sprint = value;
-			}
+			private set => sprint = value;
 		}
 		public bool Use { get; private set; }
 		public bool Interact { get; private set; }
@@ -52,11 +45,6 @@ namespace Game
 		private const int KeyboardIndex = 0;
 		public string UseKey { get; private set; }
 		public string InteractKey { get; private set; }
-		//public string SelectSlotKey { get; private set; }
-		//public string LockCameraKey { get; private set; }
-		//public string ChangeInventoryStateKey { get; private set; }
-
-		private const bool CursorLocked = false;
 
 		#endregion
 
@@ -143,16 +131,6 @@ namespace Game
 		public void ResetChangeInventoryStateInput() { ChangeInventoryState = false; }
 		public void ResetInteractInput() { Interact = false; }
 		public void ResetUseInput() { Use = false; }
-
-		private void OnApplicationFocus(bool hasFocus)
-		{
-			SetCursorState(CursorLocked);
-		}
-
-		private void SetCursorState(bool newState)
-		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-		}
 	}
 	
 }

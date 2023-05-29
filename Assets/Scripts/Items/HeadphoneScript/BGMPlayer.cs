@@ -73,10 +73,11 @@ public class BGMPlayer : MonoBehaviour
         if (!firstTime) StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
     }
 
-    private async void putSelection()
+    private IEnumerator putSelection()
     {
-        await Task.Delay(5);
+        yield return new WaitForSeconds(5);
         isSelected = false;
+        
     }
     
     private void Update()
@@ -85,12 +86,16 @@ public class BGMPlayer : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        //if (PlayerManager.LocalInstance.inventoryManager != null) Debug.Log(PlayerManager.LocalInstance.inventoryManager.hasHeadphone);
+
+        if (_audioSource != null && !_audioSource.isPlaying && isSelected)
+        {
+            isSelected = false;
+        }
         if (_audioSource != null && !_audioSource.isPlaying && !isSelected)
         {
             StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));
             isSelected = true;
-            putSelection();
+            StartCoroutine(putSelection());
         }
     }
     

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using PlayerScripts;
 using UnityEngine;
 using Unity.Netcode;
@@ -14,6 +12,7 @@ public class timerGlobal : NetworkBehaviour
     [SerializeField] private GameObject back;
     bool isNotInPause = false;
     bool isDone = false;
+    private bool hasSpawnedSubject;
 
     
     public static float timeInSecMCQ = 4*60;
@@ -46,6 +45,17 @@ public class timerGlobal : NetworkBehaviour
         }
     }
 
+    void DespawnSubject()
+    {
+        var subs = GameObject.Find("Subject");
+        while (subs != null)
+        {
+            subs.GetComponent<NetworkObject>().Despawn();
+            Destroy(subs);
+            subs = GameObject.Find("Subject");
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -81,6 +91,12 @@ public class timerGlobal : NetworkBehaviour
         {
             if (timeInSecPause > 0)
             {
+                if (!hasSpawnedSubject)
+                {
+                    DespawnSubject();
+                    PlayerNetwork.SpawnSubject();
+                    hasSpawnedSubject = true;
+                }
                 timeInSecPause -= Time.deltaTime;
                 updateClClientRpc((int)timeInSecPause/60,((int)timeInSecPause)%60, isNotInPause);
 
@@ -103,6 +119,7 @@ public class timerGlobal : NetworkBehaviour
             {
                 timeInSecMCQ = 4*60;
                 timeInSecPause = 60;
+                hasSpawnedSubject = false;
             }
         }
     }

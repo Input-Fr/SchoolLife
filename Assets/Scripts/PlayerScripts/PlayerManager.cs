@@ -42,6 +42,7 @@ namespace PlayerScripts
 		[SerializeField] public Main main;
 		[SerializeField] public TextMeshProUGUI textCode;
 		[SerializeField] public HUDSystem hudSystem;
+		[SerializeField] private bool cursorLocked = true;
 
 		private const string BuildingCTag = "BuildingC";
 
@@ -70,6 +71,8 @@ namespace PlayerScripts
 		{
 			if (!IsOwner) return;
 
+			Cursor.lockState = cursorLocked?CursorLockMode.Locked:CursorLockMode.None;
+			
 			NavMeshSurface surface = GameObject.FindGameObjectWithTag(BuildingCTag).GetComponent<NavMeshSurface>();
 			surface.BuildNavMesh();
 		}
