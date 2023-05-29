@@ -13935,7 +13935,7 @@ GameObject:
   - component: {fileID: 982489451011926271}
   - component: {fileID: 7508801973074220029}
   - component: {fileID: 6223446351626368432}
-  - component: {fileID: 7720616855798308366}
+  - component: {fileID: 8208300235819092296}
   m_Layer: 0
   m_Name: Lewis
   m_TagString: PlayerGroup
@@ -14063,7 +14063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantityMoney: {fileID: 7872979726587970084}
   quantityPoint: {fileID: 3077889764449405604}
---- !u!114 &7720616855798308366
+--- !u!114 &8208300235819092296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

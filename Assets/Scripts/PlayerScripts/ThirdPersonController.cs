@@ -332,6 +332,7 @@ namespace PlayerScripts
         {
             canBeAttacked = false;
             isKnockedOut = true;
+            PlayerManager.LocalInstance.playSoundNetwork();
 
             yield return new WaitForSeconds(3f);
 

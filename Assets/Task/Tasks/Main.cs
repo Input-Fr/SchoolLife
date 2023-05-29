@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using PlayerScripts;
 using Interface.Inventory;
 using System;
-using System.Threading.Tasks;
 using Game;
 using Items;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 
 public class Main : NetworkBehaviour
     {

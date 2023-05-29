@@ -96,14 +96,7 @@ namespace PlayerScripts
 			yield return new WaitForSeconds(instantiation.GetComponent<AudioSource>().clip.length);
 			instantiation.GetComponent<NetworkObject>().Despawn();
 		}
-		private void Update()
-		{
-			if (!IsOwner) return;
-			if (Input.GetKeyDown(KeyCode.A))
-			{
-				playSoundNetwork();
-			}
-		}
+		
 		[ClientRpc]
 		public void CatchPlayerClientRpc(int id)
 		{
