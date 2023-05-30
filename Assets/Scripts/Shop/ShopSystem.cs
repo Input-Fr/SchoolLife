@@ -5,7 +5,6 @@ using Interface.Inventory;
 using Items;
 using PlayerScripts;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,23 +21,34 @@ namespace Shop
         [SerializeField] private ItemData phone;
         [SerializeField] private ItemData bat;
         [SerializeField] private ItemData headphone;
+
+        [SerializeField] private Pause pause;
         
         private InventoryManager _inventory;
+        private GameInputs _gameInputs;
 
         void OnEnable()
         {
-            GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = true;
-
+            if (_gameInputs)
+            {
+                pause.canLockCursor = false;
+                _gameInputs.inInterface = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
 
         private void OnDisable()
         {
-            GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = false;
+            if (_gameInputs)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                _gameInputs.inInterface = false;
+                pause.canLockCursor = true;
+            }
         }
 
         private void Start()
-        { 
-            
+        {
             gameObject.SetActive(false);
         
             if (!IsOwner) return;
@@ -48,6 +58,7 @@ namespace Shop
                 HUDSystem hudSystem = PlayerManager.LocalInstance.hudSystem;
                 
                 _inventory = PlayerManager.LocalInstance.inventoryManager;
+                _gameInputs = PlayerManager.LocalInstance.gameInput;
                 
                 phoneBtn.onClick.AddListener(() =>
                 {
@@ -91,6 +102,7 @@ namespace Shop
                 HUDSystem hudSystem = PlayerManager.LocalInstance.hudSystem;
                 
                 _inventory = PlayerManager.LocalInstance.inventoryManager;
+                _gameInputs = PlayerManager.LocalInstance.gameInput;
                 
                 phoneBtn.onClick.AddListener(() =>
                 {

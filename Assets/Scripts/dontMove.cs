@@ -8,7 +8,6 @@ public class dontMove : MonoBehaviour
     void OnEnable()
     {
         PlayerManager.LocalInstance.gameInput.inInterface = true;
-
     }
 
     private void OnDisable()

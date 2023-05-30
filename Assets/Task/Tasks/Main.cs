@@ -4,18 +4,21 @@ using PlayerScripts;
 using Interface.Inventory;
 using System;
 using Game;
+using Interface;
 using Items;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class Main : NetworkBehaviour
     {
-    // Start is called before the first frame update
-    static public Main Instance;
     public int switchCount;
     public bool hasSpawned;
-    public int onCount = 0;
+    public int onCount;
     public GameObject canvas;
     [SerializeField] private ItemData key;
     [SerializeField] private AudioSource done;
+    
+    [SerializeField] private Pause pause;
 
     public Switch switch1;
     public Switch switch2;
@@ -31,22 +34,30 @@ public class Main : NetworkBehaviour
     public Switch switch12;
 
     InventoryManager _inventory;
+    private GameInputs _gameInputs;
+    
     public GameObject currentButton; // talvin il faut pas les supprimer ces variables elle sont en public mais prennent pas leurs valeurs en SerializeField
-    void OnEnable()
+    //Ok Ivan bien reçu mdrrrr
+    
+    private void OnEnable()
     {
-        GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = true;
-
+        if (_gameInputs)
+        {
+            pause.canLockCursor = false;
+            _gameInputs.inInterface = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void OnDisable()
     {
-        GameObject.FindWithTag("InputsManager").GetComponent<GameInputs>().inInterface = false;
-        if (hasSpawned) done.Play();
-    }
-    private void Awake()
-    {
-        Instance = this;
-
+        if (_gameInputs)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            _gameInputs.inInterface = false;
+            pause.canLockCursor = true;
+            if (hasSpawned) done.Play();
+        }
     }
 
     private void Start()
@@ -57,6 +68,7 @@ public class Main : NetworkBehaviour
         if (PlayerManager.LocalInstance != null)
         {
             _inventory = PlayerManager.LocalInstance.inventoryManager;
+            _gameInputs = PlayerManager.LocalInstance.gameInput;
         }
         else
         {
@@ -70,6 +82,7 @@ public class Main : NetworkBehaviour
         if (PlayerManager.LocalInstance != null)
         {
             _inventory = PlayerManager.LocalInstance.inventoryManager;
+            _gameInputs = PlayerManager.LocalInstance.gameInput;
         }
     }
 

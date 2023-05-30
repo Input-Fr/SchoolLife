@@ -45,7 +45,7 @@ public class GlassesManager : NetworkBehaviour
     {
         InventorySlot slot = _inventoryManager.selectedSlot;
         WaitingTime waitingTime = slot.GetComponentInChildren<WaitingTime>();
-        waitingTime.UpdateTimer(5);
+        waitingTime.UpdateTimer(10);
         StartCoroutine(EnableProfessorsOutline());
     }
 

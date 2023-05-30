@@ -87,10 +87,6 @@ public class BGMPlayer : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if (_audioSource != null && !_audioSource.isPlaying && isSelected)
-        {
-            isSelected = false;
-        }
         if (_audioSource != null && !_audioSource.isPlaying && !isSelected)
         {
             StartCoroutine(MusicPlayer(musicFile[Random.Range(0,musicFile.Count)]));

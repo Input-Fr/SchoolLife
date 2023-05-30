@@ -107,7 +107,6 @@ namespace Professors
         {
             if (id != (int)NetworkObjectId) return;
 
-            Debug.Log("Start Client");
             agent.speed = speed;
             agent.isStopped = isStopped;
             transform.position = new Vector3(pX, pY, pZ);
@@ -260,7 +259,7 @@ namespace Professors
                 SetAgentSpeedClientRpc(walkSpeed);
 
                 float delay = Random.Range(wanderingWaitTimeMin, wanderingWaitTimeMax);
-                StartCoroutine(Random.Range(0, 2) == 0 ? GoToDestination(delay) : StayOnSite(delay));
+                StartCoroutine(GoToDestination(delay));
             }
         }
     
@@ -268,26 +267,9 @@ namespace Professors
         {
             _hasDestination = true;
             yield return new WaitForSeconds(delay);
-        
+
             Vector3 destination = destinations.GetChild(Random.Range(0, destinations.childCount)).position;
             SetAgentDestinationClientRpc(destination.x, destination.y, destination.z);
-            _hasDestination = false;
-        }
-    
-        private IEnumerator StayOnSite(float delay)
-        {
-            _hasDestination = true;
-            yield return new WaitForSeconds(delay);
-
-            Vector3 nextDestination;
-            NavMeshHit hit;
-            do
-            {
-                nextDestination = transform.position + Random.Range(wanderingDistanceMin, wanderingDistanceMax) *
-                    new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)).normalized;
-            } while (!NavMesh.SamplePosition(nextDestination, out hit, wanderingDistanceMax, NavMesh.AllAreas));
-            
-            SetAgentDestinationClientRpc(hit.position.x, hit.position.y, hit.position.z);
             _hasDestination = false;
         }
 

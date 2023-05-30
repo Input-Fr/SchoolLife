@@ -9,7 +9,6 @@ namespace Interface.Inventory
         #region Variables
 
         [SerializeField] private GameObject mainInventoryGroup;
-        [SerializeField] private GameObject button;
 
         public bool isOpen;
 
@@ -34,9 +33,9 @@ namespace Interface.Inventory
 
         public void SetInventoryState(bool open)
         {
+            Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
             isOpen = open;
             mainInventoryGroup.SetActive(open);
-            button.SetActive(!open);
             GameInputs.Instance.ResetChangeInventoryStateInput();
         }
     }

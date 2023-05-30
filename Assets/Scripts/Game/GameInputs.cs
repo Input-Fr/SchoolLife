@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace Game
 {
@@ -12,7 +13,6 @@ namespace Game
 
 		private PlayerInputActions _playerInputActions;
 		private PlayerInputActions.PlayerActions _playerActions;
-		public bool inInterface;
 
 		private Vector2 _move;
 		public Vector2 Move
@@ -21,21 +21,28 @@ namespace Game
 			private set => _move = value;
 		}
 
-		public Vector2 Look { get; private set; }
-		private bool _jump;
+		private Vector2 _look;
+		public Vector2 Look
+		{
+			get => _look;
+			private set => _look = inInterface ? Vector2.zero : value;
+		}
 
+		private bool _jump;
 		public bool Jump
 		{
-			get => inInterface ? false : _jump;
+			get => !inInterface && _jump;
 			private set => _jump = value;
 		}
-		private bool sprint;
+
+		private bool _sprint;
 
 		public bool Sprint
 		{
-			get => inInterface ? false : sprint;
-			private set => sprint = value;
+			get => inInterface ? false : _sprint;
+			private set => _sprint = value;
 		}
+		
 		public bool Use { get; private set; }
 		public bool Interact { get; private set; }
 		public int SelectSlot { get; private set; }
@@ -45,6 +52,8 @@ namespace Game
 		private const int KeyboardIndex = 0;
 		public string UseKey { get; private set; }
 		public string InteractKey { get; private set; }
+
+		public bool inInterface;
 
 		#endregion
 

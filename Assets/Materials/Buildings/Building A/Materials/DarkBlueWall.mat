@@ -22,7 +22,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DarkBlueWall
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _NORMALMAP
+  - _OCCLUSIONMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,11 +37,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: adbb9f29b90ad42b99b5cf2be2bba8f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b6ec7782be664713b2240929bf77ac2, type: 3}
         m_Scale: {x: 1, y: 10}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: dc3215efbbdb94866a0af68d72b25ceb, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5f54d70377db44b8b51403c845204ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7b6ec7782be664713b2240929bf77ac2, type: 3}
         m_Scale: {x: 1, y: 10}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: e5ccc4d081d7a4e77a4bc8d3920f5470, type: 3}
+        m_Texture: {fileID: 2800000, guid: a7848abe8ab0646f381ce224a77e36ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

@@ -1,7 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using PlayerScripts;
 using UnityEngine;
 using Unity.Netcode;
 using TMPro;
+using Random = UnityEngine.Random;
+
 public class timerGlobal : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI textGeneric;
@@ -13,9 +18,10 @@ public class timerGlobal : NetworkBehaviour
     bool isNotInPause = false;
     bool isDone = false;
     private bool hasSpawnedSubject;
+    public static List<GameObject> playerTransforms = new List<GameObject>();
 
-    
-    public static float timeInSecMCQ = 4*60;
+
+    public static float timeInSecMCQ = 60;
     public static float timeInSecPause = 60;
 
     public override void OnNetworkSpawn()
@@ -45,14 +51,29 @@ public class timerGlobal : NetworkBehaviour
         }
     }
 
+    void tpAllPlayer()
+    {
+        foreach (var player in playerTransforms.ToList())
+        {
+            Debug.Log($"Player \"{player.name}\" is in list");
+            player.GetComponent<ThirdPersonController>().enabled = false;
+            player.transform.position = new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10));
+            player.GetComponent<ThirdPersonController>().enabled = true;
+            playerTransforms.Remove(player);
+            Debug.Log($"List size : {playerTransforms.Count}");
+        }
+    }
+    
     void DespawnSubject()
     {
-        var subs = GameObject.Find("Subject");
-        while (subs != null)
+        var subs = GameObject.FindGameObjectsWithTag("Item");
+        foreach (var sub in subs)
         {
-            subs.GetComponent<NetworkObject>().Despawn();
-            Destroy(subs);
-            subs = GameObject.Find("Subject");
+            if (sub.name.Contains("Subject"))
+            {
+                sub.GetComponent<NetworkObject>()?.Despawn();
+                Destroy(sub);
+            }
         }
     }
     
@@ -93,6 +114,7 @@ public class timerGlobal : NetworkBehaviour
             {
                 if (!hasSpawnedSubject)
                 {
+                    tpAllPlayer();
                     DespawnSubject();
                     PlayerNetwork.SpawnSubject();
                     hasSpawnedSubject = true;
@@ -104,7 +126,6 @@ public class timerGlobal : NetworkBehaviour
                 {
                     if (!isDone)
                     {
-                        Debug.Log("UPDATE HUD");
                         UpdatePlayerHudClientRpc();
                         isDone = true;
                     }

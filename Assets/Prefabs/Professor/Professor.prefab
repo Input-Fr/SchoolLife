@@ -190,6 +190,10 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
+  landingAudioClip: {fileID: 0}
+  footstepAudioClips: []
+  footstepAudioVolume: 0.5
+  songToPlay: {fileID: 0}
   walkSpeed: 1
   chaseSpeed: 3
   walkViewRadius: 6
@@ -197,11 +201,12 @@ MonoBehaviour:
   walkViewAngle: 200
   chaseViewAngle: 360
   distancePlayerCatch: 1.5
+  speedChangeRate: 10
   wanderingWaitTimeMin: 0.5
   wanderingWaitTimeMax: 3
   wanderingDistanceMin: 5
   wanderingDistanceMax: 8
-  destinations: {fileID: 8829408831909898993, guid: 8327314fa14ee40628034c373b61be3c, type: 3}
+  destinations: {fileID: 6004174030256284229, guid: 8327314fa14ee40628034c373b61be3c, type: 3}
 --- !u!114 &-6091035321026605567
 MonoBehaviour:
   m_ObjectHideFlags: 0
