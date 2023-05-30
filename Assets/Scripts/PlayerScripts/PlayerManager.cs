@@ -6,6 +6,7 @@ using Interface;
 using Interface.Inventory;
 using Interface.Inventory.Tooltips;
 using Items;
+using Tasks.Task_1;
 using TMPro;
 using Unity.AI.Navigation;
 using Unity.Netcode;
@@ -36,13 +37,13 @@ namespace PlayerScripts
 		[SerializeField] public TextInteraction textInteraction;
 		[SerializeField] public Tooltip tooltip;
 		[SerializeField] public GameObject caught;
-		[SerializeField] public GameObject taskS;
 		[SerializeField] public GameObject shop;
 		[SerializeField] public GameObject pauseMenu;
-		[SerializeField] public Main main;
+		[SerializeField] public Pause pause;
 		[SerializeField] public TextMeshProUGUI textCode;
 		[SerializeField] public HUDSystem hudSystem;
 		[SerializeField] private bool cursorLocked = true;
+		[SerializeField] public GameObject[] allTasksUI;
 
 		private const string BuildingCTag = "BuildingC";
 

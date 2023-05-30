@@ -1,6 +1,9 @@
 using System;
 using Game;
 using PlayerScripts;
+using Tasks;
+using Tasks.Task_1;
+using Tasks.Task_2;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -19,14 +22,12 @@ namespace Cam
         
         private GameObject _currentButton;
         private Camera _cam;
-        private GameObject _canvas;
     
         private void Start() {
             if (!IsOwner) return;
 
             if (PlayerManager.LocalInstance != null)
             {
-                _canvas = PlayerManager.LocalInstance.taskS;
                 _cam = GetComponent<Camera>();
             }
             else
@@ -39,7 +40,6 @@ namespace Cam
         {
             if (PlayerManager.LocalInstance != null)
             {
-                _canvas = PlayerManager.LocalInstance.taskS;
                 _cam = GetComponent<Camera>();
             }
         }
@@ -49,8 +49,27 @@ namespace Cam
             _currentButton = DetectButton();
             if (_currentButton != null && GameInputs.Instance.Interact)
             {
-                _canvas.SetActive(true);
-                PlayerManager.LocalInstance.main.currentButton = _currentButton;
+                
+                GameInputs.Instance.ResetInteractInput();
+                TaskManager taskManager = _currentButton.GetComponent<TaskManager>();
+                GameObject taskUi = PlayerManager.LocalInstance.allTasksUI[taskManager.taskIndex];
+                taskUi.GetComponent<TaskState>().taskManager = taskManager;
+
+
+                switch (taskManager)
+                {
+                    case SwitchTask task:
+                        foreach (Transform t in taskUi.transform)
+                        {
+                            t.GetComponent<Switch>().switchTask = task;
+                        }
+                        break;
+                    case CodeTask task:
+                        taskUi.transform.GetChild(0).GetComponent<KeypadTask>().codeTask = task;
+                        break;
+                }
+
+                taskUi.SetActive(true);
             }
         }
 
