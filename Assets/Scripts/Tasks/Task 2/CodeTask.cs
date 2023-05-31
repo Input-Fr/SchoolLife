@@ -4,6 +4,7 @@ namespace Tasks.Task_2
 	{
 		public void CorrectCode()
 		{
+			isTaskDone = true;
 			task.gameObject.SetActive(false);
 		}
 	}

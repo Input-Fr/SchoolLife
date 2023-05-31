@@ -7,16 +7,17 @@ public class KeypadTask : MonoBehaviour
 {
     public CodeTask codeTask;
     
+    private const int CodeLength = 6;
+    
     public TextMeshProUGUI _cardCode;
     public TextMeshProUGUI _inputCode;
-    public int _codeLength = 8;
     public float _codeResetTimeInSeconds = 0.5f;
     public bool _isResetting;
 
     private void OnEnable()
     {
         string code = string.Empty;
-        for(int i = 0; i<_codeLength; i++)
+        for(int i = 0; i<CodeLength; i++)
         {
             code += Random.Range(1,10);
         }
@@ -30,14 +31,13 @@ public class KeypadTask : MonoBehaviour
 
         _inputCode.text += number;
 
-        if (_inputCode.text == _cardCode.text.Substring(_cardCode.text.Length - _codeLength))
+        if (_inputCode.text == _cardCode.text.Substring(_cardCode.text.Length - CodeLength))
         {
             _inputCode.text = "CORRECT";
             StartCoroutine(ResetCode());
-            codeTask.CorrectCode();
 
         }
-        else if (_inputCode.text.Length >= _codeLength)
+        else if (_inputCode.text.Length >= CodeLength)
         {
             _inputCode.text = "FAILED";
             StartCoroutine(ResetCode());
@@ -50,6 +50,7 @@ public class KeypadTask : MonoBehaviour
         yield return new WaitForSeconds(_codeResetTimeInSeconds);
         _inputCode.text = string.Empty;
         _isResetting = false;
+        codeTask.CorrectCode();
     }
 
 }

@@ -15,6 +15,7 @@ namespace Tasks.Task_1
             _numberSwitchesOn += points;
             if (_numberSwitchesOn == SwitchCount)
             {
+                isTaskDone = true;
                 task.SetActive(false);
 
                 _numberSwitchesOn = 0;

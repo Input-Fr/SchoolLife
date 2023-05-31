@@ -15,6 +15,8 @@ namespace Tasks
 		[SerializeField] public int taskIndex;
 		[SerializeField] protected GameObject task;
 
+		public bool isTaskDone;
+
 		private InventoryManager _inventoryManager;
 
 		private void Start()

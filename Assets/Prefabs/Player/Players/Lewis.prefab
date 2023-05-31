@@ -4253,9 +4253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb923949e9176c64e8ac14af101b472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeTask: {fileID: 0}
   _cardCode: {fileID: 5289604722239255831}
   _inputCode: {fileID: 6824003625833385405}
-  _codeLength: 8
   _codeResetTimeInSeconds: 0.5
   _isResetting: 0
 --- !u!1 &2178502768668669458
@@ -5607,7 +5607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2db96b257bbee40a0f006e2a233d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistanceInteraction: 5
+  maxDistanceInteraction: 3
   viewAngle: 30
   buttonMask:
     serializedVersion: 2
@@ -5615,6 +5615,7 @@ MonoBehaviour:
   environment:
     serializedVersion: 2
     m_Bits: 64
+  _currentButtonPrivate: {fileID: 0}
 --- !u!114 &4867588765435392246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5627,7 +5628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fdf9bc14daa844087bb96a6afcc1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistanceInteraction: 5
+  maxDistanceInteraction: 3
   viewAngle: 30
   shopMask:
     serializedVersion: 2
@@ -11573,6 +11574,37 @@ Transform:
   m_Father: {fileID: 3566014159923252267}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5695610148834060400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548485959157419251}
+  m_Layer: 9
+  m_Name: DetectionPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548485959157419251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5695610148834060400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829477333131238944}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5746778128705378741
 GameObject:
   m_ObjectHideFlags: 0
@@ -17395,6 +17427,7 @@ Transform:
   - {fileID: 6092328781356437078}
   - {fileID: 1521484291735701387}
   - {fileID: 1736695027605869592}
+  - {fileID: 548485959157419251}
   m_Father: {fileID: 6530261604895995397}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17511,7 +17544,7 @@ MonoBehaviour:
   groundedRadius: 0.28
   groundLayers:
     serializedVersion: 2
-    m_Bits: 38080
+    m_Bits: 103616
   cinemachineCameraTarget: {fileID: 2961732205485178305}
   lookSensitivity: 8
   topClamp: 70

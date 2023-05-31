@@ -2,7 +2,6 @@ using System;
 using Game;
 using Interface;
 using PlayerScripts;
-using Tasks.Task_1;
 using UnityEngine;
 
 namespace Tasks

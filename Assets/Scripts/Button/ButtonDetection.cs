@@ -1,5 +1,6 @@
 using System;
 using Game;
+using Items.QuickOutline.Scripts;
 using PlayerScripts;
 using Tasks;
 using Tasks.Task_1;
@@ -19,8 +20,19 @@ namespace Cam
 
         private Vector3 origin => transform.position;
         private Vector3 direction => transform.TransformDirection(Vector3.forward);
-        
-        private GameObject _currentButton;
+
+        private GameObject _previousButton;
+        [SerializeField] private GameObject _currentButtonPrivate;
+        private GameObject currentButton
+        {
+            get => _currentButtonPrivate;
+            set
+            {
+                _previousButton = currentButton;
+                _currentButtonPrivate = value;
+            }
+        }
+
         private Camera _cam;
     
         private void Start() {
@@ -36,7 +48,7 @@ namespace Cam
             }
         }
 
-        void PlayerManager_OnAnyPlayerSpawn(object sender, EventArgs e)
+        private void PlayerManager_OnAnyPlayerSpawn(object sender, EventArgs e)
         {
             if (PlayerManager.LocalInstance != null)
             {
@@ -46,30 +58,47 @@ namespace Cam
 
         private void Update()
         {
-            _currentButton = DetectButton();
-            if (_currentButton != null && GameInputs.Instance.Interact)
+            currentButton = DetectButton();
+
+            if (currentButton != null)
             {
-                
-                GameInputs.Instance.ResetInteractInput();
-                TaskManager taskManager = _currentButton.GetComponent<TaskManager>();
-                GameObject taskUi = PlayerManager.LocalInstance.allTasksUI[taskManager.taskIndex];
-                taskUi.GetComponent<TaskState>().taskManager = taskManager;
-
-
-                switch (taskManager)
+                TaskManager taskManager = currentButton.GetComponent<TaskManager>();
+                OutlineManager outline = currentButton.GetComponent<OutlineManager>();
+                if (taskManager.isTaskDone)
                 {
-                    case SwitchTask task:
-                        foreach (Transform t in taskUi.transform)
-                        {
-                            t.GetComponent<Switch>().switchTask = task;
-                        }
-                        break;
-                    case CodeTask task:
-                        taskUi.transform.GetChild(0).GetComponent<KeypadTask>().codeTask = task;
-                        break;
+                    outline.OutlineColor = Color.red;
                 }
+                else
+                {
+                    outline.OutlineColor = Color.white;
+                    if (GameInputs.Instance.Interact)
+                    {
+                        GameInputs.Instance.ResetInteractInput();
+                        GameObject taskUi = PlayerManager.LocalInstance.allTasksUI[taskManager.taskIndex];
+                        taskUi.GetComponent<TaskState>().taskManager = taskManager;
+                
+                        switch (taskManager)
+                        {
+                            case SwitchTask task:
+                                foreach (Transform t in taskUi.transform)
+                                {
+                                    t.GetComponent<Switch>().switchTask = task;
+                                }
+                                break;
+                            case CodeTask task:
+                                taskUi.transform.GetChild(0).GetComponent<KeypadTask>().codeTask = task;
+                                break;
+                        }
 
-                taskUi.SetActive(true);
+                        taskUi.SetActive(true);
+                    }
+                }
+                
+                outline.enabled = true;
+            }
+            else if (_previousButton != null)
+            {
+                _previousButton.GetComponent<OutlineManager>().enabled = false;
             }
         }
 
