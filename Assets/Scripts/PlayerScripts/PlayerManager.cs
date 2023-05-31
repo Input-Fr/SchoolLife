@@ -42,6 +42,7 @@ namespace PlayerScripts
 		[SerializeField] public Pause pause;
 		[SerializeField] public TextMeshProUGUI textCode;
 		[SerializeField] public HUDSystem hudSystem;
+		[SerializeField] public PuzzleManager puzzleManager;
 		[SerializeField] private bool cursorLocked = true;
 		[SerializeField] public GameObject[] allTasksUI;
 
