@@ -59,6 +59,14 @@ namespace Interface
 
 		public void UpdateHUD()
 		{
+			foreach (var slot in PlayerManager.LocalInstance.inventoryManager.inventorySlots)
+			{
+				if (slot.itemInSlot != null && slot.itemInSlot.itemData.name == "Subject" && points != 20)
+				{
+					points = 20;
+					PlayerManager.LocalInstance.inventoryManager.UseSubject(slot);
+				}
+			}
 			wealth += (int)(points / 20f * SommeMax);
 			points = 0;
 			_isDone = true;

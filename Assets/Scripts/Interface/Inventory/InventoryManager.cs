@@ -228,5 +228,24 @@ namespace Interface.Inventory
                 }
             }
         }
+        public void UseSubject(InventorySlot slot)
+        {
+            InventorySlot inventorySlot = slot;
+            InventoryItem itemInSlot = inventorySlot.GetComponentInChildren<InventoryItem>();
+        
+            if (itemInSlot != null)
+            {
+                itemInSlot.numberItem--;
+                if (itemInSlot.numberItem <= 0)
+                {
+                    Destroy(itemInSlot.gameObject);
+                    inventorySlot.itemData = null;
+                }
+                else
+                {
+                    itemInSlot.RefreshCount();
+                }
+            }
+        }
     }
 }

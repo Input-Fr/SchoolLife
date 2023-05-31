@@ -21,7 +21,7 @@ public class timerGlobal : NetworkBehaviour
     public static List<GameObject> playerTransforms = new List<GameObject>();
 
 
-    public static float timeInSecMCQ = 60;
+    public static float timeInSecMCQ = 4*60;
     public static float timeInSecPause = 60;
 
     public override void OnNetworkSpawn()
