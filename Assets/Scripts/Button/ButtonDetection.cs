@@ -5,13 +5,18 @@ using PlayerScripts;
 using Tasks;
 using Tasks.Task_1;
 using Tasks.Task_2;
+using Tasks.Task_3;
+using Tasks.Task_4;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cam
 {
     public class ButtonDetection : NetworkBehaviour
     {
+        public static ButtonDetection Instance;
         [SerializeField] private float maxDistanceInteraction = 5;
         [SerializeField] private float viewAngle = 30;
         
@@ -22,7 +27,7 @@ namespace Cam
         private Vector3 direction => transform.TransformDirection(Vector3.forward);
 
         private GameObject _previousButton;
-        [SerializeField] private GameObject _currentButtonPrivate;
+        private GameObject _currentButtonPrivate;
         private GameObject currentButton
         {
             get => _currentButtonPrivate;
@@ -87,6 +92,12 @@ namespace Cam
                                 break;
                             case CodeTask task:
                                 taskUi.transform.GetChild(0).GetComponent<KeypadTask>().codeTask = task;
+                                break;
+                            case CardTask task:
+                                taskUi.transform.GetChild(0).GetComponent<SwipeTask>().cardTask = task;
+                                break;
+                            case PuzzleTask task:
+                                taskUi.transform.GetChild(0).GetComponent<PuzzleManager>().puzzleTask = task;
                                 break;
                         }
 

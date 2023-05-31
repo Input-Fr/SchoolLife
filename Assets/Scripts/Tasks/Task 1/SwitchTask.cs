@@ -6,7 +6,6 @@ namespace Tasks.Task_1
 {
     public class SwitchTask : TaskManager
     {
-        private const int PointToAdd = 2;
         private const int SwitchCount = 12;
         private static int _numberSwitchesOn;
 
@@ -19,19 +18,8 @@ namespace Tasks.Task_1
                 task.SetActive(false);
 
                 _numberSwitchesOn = 0;
-                if (buttonType is ButtonType.StealTask)
-                {
-                    AddItemToInventory();
-                }
-                else
-                {
-                    HUDSystem hudSystem = PlayerManager.LocalInstance.hudSystem;
-                    hudSystem.points += PointToAdd;
-                    if (hudSystem.points >= 20)
-                    {
-                        hudSystem.points = 20;
-                    }
-                }
+                
+                Rewards();
 
                 foreach (Transform t in task.transform)
                 {

@@ -1,8 +1,8 @@
-namespace Tasks.Task_2
+namespace Tasks.Task_3
 {
-	public class CodeTask : TaskManager
+	public class CardTask : TaskManager
 	{
-		public void CorrectCode()
+		public void ValidAccess()
 		{
 			isTaskDone = true;
 			task.gameObject.SetActive(false);

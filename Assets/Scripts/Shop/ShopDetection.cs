@@ -73,15 +73,11 @@ namespace Shop
                         Vector3 position = buttonHit.transform.position;
                         Vector3 directionToTarget = (position - transform.position).normalized;
 
-                        //float distanceToTarget = Vector3.Distance(Origin, position);
-                        //if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, environment))
-                        //{
-                            float angle = Vector3.Angle(direction, directionToTarget);
-                            if (angle < viewAngle / 2)
-                            {
-                                return buttonHit.transform.gameObject;
-                            }
-                        //}
+                        float angle = Vector3.Angle(direction, directionToTarget);
+                        if (angle < viewAngle / 2)
+                        {
+                            return buttonHit.transform.gameObject;
+                        }
                     }
                 }
             }
