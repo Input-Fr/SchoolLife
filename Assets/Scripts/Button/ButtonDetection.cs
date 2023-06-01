@@ -68,14 +68,11 @@ namespace Cam
             if (currentButton != null)
             {
                 TaskManager taskManager = currentButton.GetComponent<TaskManager>();
-                OutlineManager outline = currentButton.GetComponent<OutlineManager>();
                 if (taskManager.isTaskDone)
                 {
-                    outline.OutlineColor = Color.red;
                 }
                 else
                 {
-                    outline.OutlineColor = Color.white;
                     if (GameInputs.Instance.Interact)
                     {
                         GameInputs.Instance.ResetInteractInput();
@@ -104,12 +101,6 @@ namespace Cam
                         taskUi.SetActive(true);
                     }
                 }
-                
-                outline.enabled = true;
-            }
-            else if (_previousButton != null)
-            {
-                _previousButton.GetComponent<OutlineManager>().enabled = false;
             }
         }
 

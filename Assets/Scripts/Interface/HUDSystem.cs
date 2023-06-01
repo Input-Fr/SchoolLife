@@ -33,7 +33,7 @@ namespace Interface
 		}
 		
 		private bool _isDone;
-		private const int SommeMax = 40;
+		private const int SommeMax = 200;
 
 		private void Start()
 		{

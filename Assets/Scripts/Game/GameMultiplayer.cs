@@ -11,14 +11,11 @@ namespace Game
 	{
 		public static GameMultiplayer Instance { get; private set; }
 
-		private static NavMeshSurface _surface;
 		private const string BuildingCTag = "BuildingC";
 
 		private void Awake()
 		{
 			Instance = this;
-
-			_surface = GameObject.FindWithTag(BuildingCTag).GetComponent<NavMeshSurface>();
 		}
 
 		public void InstantiateItem(ItemData itemData, Vector3 position, Quaternion rotation)
@@ -35,13 +32,6 @@ namespace Game
 			
 			GameObject instantiatedItem = Instantiate(itemPrefab, position, rotation);
 			instantiatedItem.GetComponent<NetworkObject>().Spawn(true);
-		}
-
-		// ReSharper disable Unity.PerformanceAnalysis
-		public static IEnumerator BakeSurface()
-		{
-			yield return new WaitForSeconds(1f);
-			_surface.BuildNavMesh();
 		}
 	}
 }

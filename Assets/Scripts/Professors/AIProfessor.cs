@@ -190,7 +190,10 @@ namespace Professors
                 if (!(Vector3.Angle(transform.forward, directionToPlayer) < _viewAngle / 2)) continue;
 
                 float distanceToPlayer = Vector3.Distance(position, playerHeadPosition);
+                
+                Debug.Log("Before");
                 if (Physics.Raycast(position, directionToPlayer, distanceToPlayer, obstacleMask)) continue;
+                Debug.Log("AFter");
 
                 if (newPlayer != null)
                 {

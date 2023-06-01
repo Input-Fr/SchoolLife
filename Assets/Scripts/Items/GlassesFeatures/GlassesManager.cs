@@ -17,6 +17,8 @@ public class GlassesManager : NetworkBehaviour
     private GameObject[] _professors;
     private const string ProfessorsTag = "Professor";
 
+    private bool _canUseGlasses = true;
+
     private void Start()
     {
         if (!IsOwner) return;
@@ -43,24 +45,34 @@ public class GlassesManager : NetworkBehaviour
 
     public void UseGlasses()
     {
-        InventorySlot slot = _inventoryManager.selectedSlot;
-        WaitingTime waitingTime = slot.GetComponentInChildren<WaitingTime>();
-        waitingTime.UpdateTimer(10);
-        StartCoroutine(EnableProfessorsOutline());
+        if (_canUseGlasses)
+        {
+            StartCoroutine(EnableProfessorsOutline());
+        }
     }
 
     private IEnumerator EnableProfessorsOutline()
     {
+        _canUseGlasses = false;
+        InventorySlot slot = _inventoryManager.selectedSlot;
+        WaitingTime waitingTime = slot.GetComponentInChildren<WaitingTime>();
+        waitingTime.UpdateTimer(10);
         glassesInHand.gameObject.SetActive(false);
         glassesOnHead.SetActive(true);
 
         ChangeProfessorsOutlineState(true);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
 
         ChangeProfessorsOutlineState(false);
         glassesOnHead.SetActive(false);
-        _inventoryManager.UseSelectedItem();
+        glassesInHand.SetActive(true);
+        //_inventoryManager.UseSelectedItem();
+
+        waitingTime.UpdateTimer(90);
+        yield return new WaitForSeconds(90);
+        _canUseGlasses = true;
+
     }
 
     private void ChangeProfessorsOutlineState(bool state)

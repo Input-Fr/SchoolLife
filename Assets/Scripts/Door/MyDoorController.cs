@@ -97,7 +97,6 @@ namespace Door
         private void PlayerAnimationClientRpc(string animationName)
         {
             doorAnimator.Play(animationName, 0, 0f);
-            StartCoroutine(GameMultiplayer.BakeSurface());
         }
 
         public string TextContent()
