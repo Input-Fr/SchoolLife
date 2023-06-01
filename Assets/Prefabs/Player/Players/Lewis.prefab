@@ -6432,10 +6432,12 @@ MonoBehaviour:
   phoneBtn: {fileID: 2642263434042908512}
   batBtn: {fileID: 3621779297649477865}
   headphoneBtn: {fileID: 2557213827806954085}
+  glasseBtn: {fileID: 7797139575160808453}
   exitBtn: {fileID: 7236536271290293016}
   phone: {fileID: 11400000, guid: 40c53f2e00b0b4a30b02ad84a7d8d2c4, type: 2}
   bat: {fileID: 11400000, guid: 9049d0512829f4d5295f717ded1040e2, type: 2}
   headphone: {fileID: 11400000, guid: 642bee07c74027c41b5d8f5d6223e458, type: 2}
+  glasses: {fileID: 11400000, guid: 910df169d66e3a4418d6559918101194, type: 2}
   pause: {fileID: 7352698261490975854}
 --- !u!1 &3052323133682637277
 GameObject:

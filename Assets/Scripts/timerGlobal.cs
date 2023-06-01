@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PlayerScripts;
+using Tasks;
 using UnityEngine;
 using Unity.Netcode;
 using TMPro;
@@ -19,9 +20,10 @@ public class timerGlobal : NetworkBehaviour
     bool isDone = false;
     private bool hasSpawnedSubject;
     public static List<GameObject> playerTransforms = new List<GameObject>();
+    public List<TaskManager> tasks = new List<TaskManager>();
 
 
-    public static float timeInSecMCQ = 4*60;
+    public static float timeInSecMCQ = 60;
     public static float timeInSecPause = 60;
 
     public override void OnNetworkSpawn()
@@ -118,6 +120,10 @@ public class timerGlobal : NetworkBehaviour
                     DespawnSubject();
                     PlayerNetwork.SpawnSubject();
                     hasSpawnedSubject = true;
+                    foreach (TaskManager task in tasks)
+                    {
+                        task.isTaskDone = false;
+                    }
                 }
                 timeInSecPause -= Time.deltaTime;
                 updateClClientRpc((int)timeInSecPause/60,((int)timeInSecPause)%60, isNotInPause);

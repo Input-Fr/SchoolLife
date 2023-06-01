@@ -16,11 +16,13 @@ namespace Shop
         [SerializeField] private Button phoneBtn;
         [SerializeField] private Button batBtn;
         [SerializeField] private Button headphoneBtn;
+        [SerializeField] private Button glasseBtn;
         [SerializeField] private Button exitBtn;
         
         [SerializeField] private ItemData phone;
         [SerializeField] private ItemData bat;
         [SerializeField] private ItemData headphone;
+        [SerializeField] private ItemData glasses;
 
         [SerializeField] private Pause pause;
         
@@ -84,6 +86,14 @@ namespace Shop
                     }
                 });
         
+                glasseBtn.onClick.AddListener(() => 
+                {
+                    if (hudSystem.wealth >= 130 && _inventory.AddItem(glasses))
+                    {
+                        hudSystem.wealth -= 130;
+                    }
+                });
+                
                 exitBtn.onClick.AddListener(() => 
                 {
                     gameObject.SetActive(false);
