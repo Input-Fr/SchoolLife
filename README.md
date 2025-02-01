@@ -29,4 +29,4 @@ Le jeu utilise le service **Relay & Lobby de Unity** pour permettre aux joueurs 
 3. **Lancer le jeu depuis l’éditeur ou compiler un build.**
 
 ## Rapport final du projet
-[📄 Télécharger le PDF](https://raw.githubusercontent.com/Input-Fr/SchoolLife/refs/heads/main/RapportFinal.pdf)
+[📄 Télécharger le PDF](https://github.com/Input-Fr/SchoolLife/blob/main/RapportFinal.pdf)
