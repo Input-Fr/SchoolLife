@@ -17,7 +17,9 @@ Deux choix s'offrent aux joueurs pour réussir :
 Le jeu utilise le service **Relay & Lobby de Unity** pour permettre aux joueurs de :  
 - Héberger et rejoindre des parties facilement.  
 - Interagir en temps réel dans un environnement dynamique.  
-- Participer à des affrontements entre étudiants et profs/fayots.  
+- Participer à des affrontements entre étudiants et profs/fayots.
+
+### Rejoins tes amis avec ton code de partie !
 ![Rejoins tes amis avec ton code de partie !](https://github.com/Input-Fr/SchoolLife/blob/main/image.png?raw=true)
 
 ## 🚀 **Installation et Lancement**  
