@@ -22,11 +22,11 @@ Le jeu utilise le service **Relay & Lobby de Unity** pour permettre aux joueurs 
 ## 🚀 **Installation et Lancement**  
 1. **Cloner le repo** :  
    ```bash
-   git clone https://github.com/user/repo.git
+   git clone https://github.com/Input-Fr/SchoolLife.git
    cd School-Life
    ```
 2. **Ouvrir avec Unity**
 3. **Lancer le jeu depuis l’éditeur ou compiler un build.**
 
 ## Rapport final du projet
-[📄 Télécharger le PDF](https://github.com/user/repo/raw/main/docs/guide.pdf)
+[📄 Télécharger le PDF](https://raw.githubusercontent.com/Input-Fr/SchoolLife/refs/heads/main/RapportFinal.pdf)
