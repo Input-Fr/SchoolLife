@@ -12,6 +12,8 @@ Deux choix s'offrent aux joueurs pour réussir :
 - **Exploration libre** : Déplacement dans l’école, socialisation avec les autres joueurs.  
 - **Vol de sujet** : Mode principal du jeu où les étudiants affrontent profs et fayots pour récupérer les sujets.  
 - **Mini-jeux et interactions** : Réalisation de tâches pour améliorer ses compétences et obtenir des avantages.  
+### Explore l'école avec tes amis
+![Explore l'école avec tes amis !](https://github.com/Input-Fr/SchoolLife/blob/main/ll.png?raw=true)
 
 ## 🎮 **Multijoueur**  
 Le jeu utilise le service **Relay & Lobby de Unity** pour permettre aux joueurs de :  
